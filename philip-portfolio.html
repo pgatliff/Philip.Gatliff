@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Philip — IT Specialist | U.S. Army 25B</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --navy-light: #1a3055;
+    --gold: #c9993a;
+    --gold-light: #e8b84b;
+    --gold-pale: #f5d98020;
+    --white: #f0ede8;
+    --gray: #8a9bb0;
+    --gray-light: #b8c5d6;
+    --charcoal: #141e2e;
+    --accent: #3a7bd5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── GRID OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,153,58,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,153,58,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,153,58,0.2);
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--gray-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(8rem, 18vw, 20rem);
+    color: rgba(201,153,58,0.04);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 5rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .hero-subtitle {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--gray-light);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--gray-light);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid rgba(201,153,58,0.4);
+    color: var(--gold-light);
+    text-transform: uppercase;
+    background: rgba(201,153,58,0.06);
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: var(--gold);
+    color: var(--navy);
+    text-decoration: none;
+    border: 2px solid var(--gold);
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--gold);
+  }
+
+  .btn-secondary {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    border: 2px solid rgba(240,237,232,0.3);
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--white);
+  }
+
+  /* Photo box */
+  .hero-photo {
+    position: relative;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 300px;
+    height: 360px;
+    margin: 0 auto;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    top: -12px; right: -12px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--gold);
+    z-index: 0;
+  }
+
+  .photo-placeholder {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: var(--navy-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px solid rgba(201,153,58,0.2);
+    overflow: hidden;
+  }
+
+  .photo-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,153,58,0.06) 0%, transparent 60%);
+  }
+
+  .photo-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+  }
+
+  .photo-placeholder p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .photo-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+  }
+
+  .photo-corner.tl { top: 0; left: 0; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+  .photo-corner.br { bottom: 0; right: 0; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+  .status-dot {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4caf86;
+    box-shadow: 0 0 0 3px rgba(76,175,134,0.2);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(76,175,134,0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(76,175,134,0.05); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 0.03em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 span { color: var(--gold); }
+
+  .section-rule {
+    width: 4rem;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  /* ─── DIVIDER ─── */
+  .full-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,153,58,0.3), transparent);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--gray-light);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--gold);
+    background: rgba(201,153,58,0.04);
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  /* ─── SKILLS ─── */
+  #skills { background: var(--charcoal); padding: 6rem 0; max-width: 100%; }
+  #skills .inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    padding: 1.75rem;
+    border: 1px solid rgba(201,153,58,0.15);
+    background: rgba(10,22,40,0.6);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(201,153,58,0.4);
+    transform: translateY(-3px);
+  }
+
+  .skill-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .skill-icon {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    background: rgba(201,153,58,0.08);
+    border: 1px solid rgba(201,153,58,0.2);
+    color: var(--gray-light);
+  }
+
+  /* ─── TRAINING ─── */
+  .training-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .training-card {
+    padding: 1.75rem;
+    background: var(--navy-mid);
+    border: 1px solid rgba(201,153,58,0.12);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .training-card:hover {
+    border-color: rgba(201,153,58,0.35);
+  }
+
+  .training-card .number {
+    position: absolute;
+    top: 1rem; right: 1.25rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(201,153,58,0.08);
+    line-height: 1;
+  }
+
+  .training-card h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .training-card p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), rgba(201,153,58,0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3.5rem;
+    animation: fadeIn 0.5s ease both;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 0.45rem;
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(201,153,58,0.15);
+  }
+
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-role {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-org {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--gray-light);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.1rem;
+  }
+
+  /* ─── LEADERSHIP ─── */
+  #leadership { background: var(--charcoal); padding: 6rem 0; max-width: 100%; }
+  #leadership .inner { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+
+  .leadership-banner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+    padding: 3rem;
+    border: 1px solid rgba(201,153,58,0.25);
+    background: linear-gradient(135deg, rgba(201,153,58,0.06) 0%, transparent 60%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .leadership-banner::before {
+    content: '★';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    color: rgba(201,153,58,0.04);
+    line-height: 1;
+  }
+
+  .leadership-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1.1;
+    letter-spacing: 0.03em;
+  }
+
+  .leadership-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .leadership-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .leadership-bullets li {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--gray-light);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .leadership-bullets li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.1rem;
+  }
+
+  /* ─── CERTS / ROADMAP ─── */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .roadmap-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(201,153,58,0.12);
+    background: var(--navy-mid);
+    position: relative;
+  }
+
+  .roadmap-status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  .status-target { background: rgba(201,153,58,0.12); color: var(--gold-light); border: 1px solid rgba(201,153,58,0.3); }
+  .status-planned { background: rgba(58,123,213,0.1); color: #7eb3f5; border: 1px solid rgba(58,123,213,0.3); }
+
+  .roadmap-cert {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  .roadmap-desc {
+    font-size: 0.8rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-box {
+    text-align: center;
+    padding: 5rem 3rem;
+    border: 1px solid rgba(201,153,58,0.2);
+    background: linear-gradient(135deg, rgba(201,153,58,0.04) 0%, transparent 60%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::before {
+    content: 'CONTACT';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14rem;
+    color: rgba(201,153,58,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .contact-box h2 {
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .contact-box p {
+    font-size: 1rem;
+    color: var(--gray-light);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-top: 1px solid rgba(201,153,58,0.12);
+    background: var(--charcoal);
+  }
+
+  footer p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  footer span { color: var(--gold); }
+
+  /* ─── FADE-IN ─── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in { animation: fadeIn 0.7s ease both; }
+
+  /* scroll-triggered via IntersectionObserver */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    #hero { padding: 7rem 2rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { display: none; }
+    section, #skills .inner, #leadership .inner { padding: 4rem 2rem; }
+    .about-grid, .training-grid, .skills-grid, .roadmap-grid { grid-template-columns: 1fr; }
+    .leadership-banner { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-brand">Philip &nbsp;/&nbsp; 25B</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg-text">25B</div>
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-label">U.S. Army · Active Duty · AIT</div>
+      <h1>Philip<br /><span>IT Specialist</span></h1>
+      <div class="hero-subtitle">MOS 25B &nbsp;·&nbsp; Cybersecurity Track &nbsp;·&nbsp; DoD Cleared</div>
+      <p class="hero-desc">
+        Active-duty Army IT Specialist with hands-on experience in secure DoD network environments, 
+        end-user support, and system administration. Transitioning from military service into 
+        civilian IT with a focus on cybersecurity and government-adjacent roles.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">NIPR/SIPR Networks</span>
+        <span class="badge">CAC / PKI</span>
+        <span class="badge">DoD IA Frameworks</span>
+        <span class="badge">Army365</span>
+        <span class="badge">Active Directory</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo fade-in" style="animation-delay:0.2s">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner br"></div>
+          <div class="photo-icon">🪖</div>
+          <p>Photo Here</p>
+        </div>
+      </div>
+      <div class="status-dot">
+        <span class="dot"></span>
+        Available for transition — 2025
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2>About <span>Me</span></h2>
+  <div class="section-rule"></div>
+
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm an <strong>active-duty U.S. Army soldier</strong> completing Advanced Individual Training (AIT) 
+        as a <strong>25B IT Specialist</strong> — the Army's information technology systems specialist. 
+        My training spans hardware maintenance, OS administration, secure network operations, and DoD 
+        cybersecurity policy, all executed in classified and unclassified environments.
+      </p>
+      <p>
+        Before enlisting, I built a diverse professional background that spans <strong>electrical 
+        distribution</strong> at Sonepar Electric, <strong>operations management</strong> at Fortune Forever 
+        Recording Studios, and entrepreneurship as the owner of <strong>DB AV Supplies LLC</strong>. 
+        This combination of technical depth and operational leadership is what sets me apart.
+      </p>
+      <p>
+        My long-term goal is to transition into <strong>civilian cybersecurity</strong> — bringing the 
+        discipline, mission-focus, and security clearance experience from military service into a high-impact 
+        role in IT governance, compliance, or security operations.
+      </p>
+    </div>
+
+    <div class="about-stats reveal" style="transition-delay:0.15s">
+      <div class="stat-item">
+        <div class="stat-num">25B</div>
+        <div class="stat-label">Army MOS — IT Systems Specialist</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">DoD</div>
+        <div class="stat-label">Security Clearance Environment Exposure</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Industries of Professional Experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">LLC</div>
+        <div class="stat-label">DB AV Supplies — Founder & Owner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ─── SKILLS ─── -->
+<div id="skills">
+  <div class="inner">
+    <div class="section-label">Core Competencies</div>
+    <h2>Technical <span>Skills</span></h2>
+    <div class="section-rule"></div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">🔒</div>
+        <div class="skill-title">DoD Security & Compliance</div>
+        <div class="skill-tags">
+          <span class="skill-tag">NIPR Networks</span>
+          <span class="skill-tag">SIPR Networks</span>
+          <span class="skill-tag">CAC Authentication</span>
+          <span class="skill-tag">PKI Infrastructure</span>
+          <span class="skill-tag">DoD IA Frameworks</span>
+          <span class="skill-tag">Information Assurance</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.08s">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-title">Hardware & End-User Support</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Desktop / Laptop Repair</span>
+          <span class="skill-tag">Peripheral Troubleshooting</span>
+          <span class="skill-tag">Printer Configuration</span>
+          <span class="skill-tag">Hardware Diagnostics</span>
+          <span class="skill-tag">Component Replacement</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.16s">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-title">Operating Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Windows 10/11</span>
+          <span class="skill-tag">Windows Server</span>
+          <span class="skill-tag">Linux (CLI)</span>
+          <span class="skill-tag">OS Imaging</span>
+          <span class="skill-tag">Group Policy</span>
+          <span class="skill-tag">System Updates</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.08s">
+        <div class="skill-icon">🌐</div>
+        <div class="skill-title">Networking</div>
+        <div class="skill-tags">
+          <span class="skill-tag">TCP/IP</span>
+          <span class="skill-tag">DNS / DHCP</span>
+          <span class="skill-tag">VPN</span>
+          <span class="skill-tag">Network Troubleshooting</span>
+          <span class="skill-tag">Firewall Basics</span>
+          <span class="skill-tag">LAN/WAN</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.16s">
+        <div class="skill-icon">👤</div>
+        <div class="skill-title">Identity & Access Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Active Directory</span>
+          <span class="skill-tag">User Account Management</span>
+          <span class="skill-tag">Group Policy Objects</span>
+          <span class="skill-tag">Role-Based Access Control</span>
+          <span class="skill-tag">Password Policies</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.24s">
+        <div class="skill-icon">☁️</div>
+        <div class="skill-title">Cloud & Productivity Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Army365 (M365)</span>
+          <span class="skill-tag">Microsoft Teams</span>
+          <span class="skill-tag">SharePoint</span>
+          <span class="skill-tag">Exchange Online</span>
+          <span class="skill-tag">OneDrive</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">🛡️</div>
+        <div class="skill-title">Cybersecurity Fundamentals</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Threat Awareness</span>
+          <span class="skill-tag">OPSEC</span>
+          <span class="skill-tag">Incident Response Basics</span>
+          <span class="skill-tag">Vulnerability Concepts</span>
+          <span class="skill-tag">Security Policies</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.08s">
+        <div class="skill-icon">💾</div>
+        <div class="skill-title">Virtualization</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Virtual Machines</span>
+          <span class="skill-tag">Hypervisor Concepts</span>
+          <span class="skill-tag">VM Provisioning</span>
+          <span class="skill-tag">Snapshot Management</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="transition-delay:0.16s">
+        <div class="skill-icon">🧰</div>
+        <div class="skill-title">IT Operations & Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Ticketing Systems</span>
+          <span class="skill-tag">Documentation</span>
+          <span class="skill-tag">Team Communication</span>
+          <span class="skill-tag">Training Delivery</span>
+          <span class="skill-tag">Mission Planning</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- ─── TRAINING ─── -->
+<section id="training">
+  <div class="section-label">AIT Curriculum</div>
+  <h2>Training & <span>Coursework</span></h2>
+  <div class="section-rule"></div>
+
+  <div class="training-grid">
+    <div class="training-card reveal">
+      <div class="number">01</div>
+      <h3>IT Fundamentals & Hardware</h3>
+      <p>Hands-on training in computer hardware assembly, diagnostics, component identification, and preventive maintenance procedures across Army-standard workstations and peripherals.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.08s">
+      <div class="number">02</div>
+      <h3>Operating Systems Administration</h3>
+      <p>Installed, configured, and managed Windows client and server operating systems. Covered system imaging, patch management, and user environment administration using Group Policy.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.16s">
+      <div class="number">03</div>
+      <h3>Networking Concepts</h3>
+      <p>Applied TCP/IP networking fundamentals, subnetting, DNS/DHCP configuration, and network troubleshooting methodologies across both classified and unclassified Army network segments.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.24s">
+      <div class="number">04</div>
+      <h3>DoD Cybersecurity & IA Policy</h3>
+      <p>Studied DoD Information Assurance frameworks, OPSEC principles, and security compliance requirements. Practiced procedures for maintaining data integrity across NIPR and SIPR environments.</p>
+    </div>
+
+    <div class="training-card reveal">
+      <div class="number">05</div>
+      <h3>Active Directory & Identity Management</h3>
+      <p>Managed user accounts, organizational units, and security groups in Active Directory. Applied role-based access controls and group policies consistent with DoD access management standards.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.08s">
+      <div class="number">06</div>
+      <h3>CAC / PKI & Army365</h3>
+      <p>Configured and troubleshot CAC-based authentication and PKI certificate infrastructure. Administered Army365 (Microsoft 365) services including Teams, Exchange, and SharePoint in a DoD environment.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.16s">
+      <div class="number">07</div>
+      <h3>End-User Support & Help Desk</h3>
+      <p>Developed structured troubleshooting skills for hardware, software, and connectivity issues. Practiced ticket documentation, escalation procedures, and user communication under time-sensitive conditions.</p>
+    </div>
+
+    <div class="training-card reveal" style="transition-delay:0.24s">
+      <div class="number">08</div>
+      <h3>Virtualization & Systems Integration</h3>
+      <p>Deployed and managed virtual machines using hypervisor platforms. Explored systems integration concepts including snapshot management, VM provisioning, and resource allocation.</p>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience">
+  <div class="section-label">Work History</div>
+  <h2>Professional <span>Experience</span></h2>
+  <div class="section-rule"></div>
+
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2024 – Present</div>
+      <div class="timeline-role">IT Specialist (25B) · Advanced Individual Training</div>
+      <div class="timeline-org">U.S. Army · Active Duty</div>
+      <ul class="timeline-bullets">
+        <li>Performed hardware diagnostics, component-level repair, and OS configuration on Army-standard workstations in both classified (SIPR) and unclassified (NIPR) environments.</li>
+        <li>Administered Active Directory user accounts, security groups, and Group Policy objects, ensuring access controls aligned with DoD IA security standards.</li>
+        <li>Configured and troubleshot CAC-based authentication and PKI certificates, resolving credential and certificate chain issues for end users.</li>
+        <li>Managed Army365 (Microsoft 365) services — Teams, Exchange Online, SharePoint — providing first- and second-tier technical support under strict operational security protocols.</li>
+        <li>Diagnosed TCP/IP connectivity faults, performed DNS/DHCP troubleshooting, and restored network access across LAN segments in a garrison IT environment.</li>
+        <li>Applied DoD cybersecurity policy and OPSEC procedures when handling, storing, and transmitting sensitive data across classified networks.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal" style="transition-delay:0.1s">
+      <div class="timeline-date">Prior to Service</div>
+      <div class="timeline-role">Operations Manager</div>
+      <div class="timeline-org">Fortune Forever Recording Studios</div>
+      <ul class="timeline-bullets">
+        <li>Oversaw day-to-day studio operations including scheduling, client communications, staff coordination, and resource allocation across multiple project tracks.</li>
+        <li>Managed audio/visual equipment procurement, maintenance logistics, and vendor relationships, developing foundational knowledge in AV hardware and signal chains.</li>
+        <li>Led client intake, contract management, and project delivery for recording and production sessions, maintaining high client satisfaction and repeat business.</li>
+        <li>Coordinated cross-functional teams to meet production deadlines in a high-pressure, deadline-driven creative environment.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal" style="transition-delay:0.2s">
+      <div class="timeline-date">Prior to Service</div>
+      <div class="timeline-role">Sales / Technical Associate</div>
+      <div class="timeline-org">Sonepar Electric (Electrical Distribution)</div>
+      <ul class="timeline-bullets">
+        <li>Advised commercial and residential clients on electrical component selection, specifications, and procurement, requiring technical literacy in electrical systems.</li>
+        <li>Managed inventory, order fulfillment, and warehouse operations for high-volume electrical supplies in a fast-paced distribution environment.</li>
+        <li>Built and maintained client relationships with contractors and project managers, supporting large-scale procurement decisions.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item reveal" style="transition-delay:0.3s">
+      <div class="timeline-date">Ongoing</div>
+      <div class="timeline-role">Founder & Owner</div>
+      <div class="timeline-org">DB AV Supplies LLC</div>
+      <ul class="timeline-bullets">
+        <li>Founded and operate a small business specializing in audio/visual supply, combining technical product knowledge with entrepreneurial operations management.</li>
+        <li>Handle all aspects of the business: vendor sourcing, inventory, customer relations, financial management, and compliance with state LLC requirements.</li>
+        <li>Demonstrated initiative, self-direction, and accountability — qualities that translate directly into reliable IT professional conduct.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ─── LEADERSHIP ─── -->
+<div id="leadership">
+  <div class="inner">
+    <div class="section-label">Military Leadership</div>
+    <h2>Assistant Platoon <span>Guide</span></h2>
+    <div class="section-rule"></div>
+
+    <div class="leadership-banner reveal">
+      <div>
+        <div class="leadership-title">Assistant<br />Platoon<br />Guide</div>
+        <div class="leadership-sub">U.S. Army · AIT</div>
+      </div>
+      <div>
+        <ul class="leadership-bullets">
+          <li>Selected to serve as Assistant Platoon Guide — a peer-leadership role assigned to soldiers who demonstrate reliability, professionalism, and the ability to lead by example.</li>
+          <li>Coordinated soldier accountability, formation readiness, and information flow between platoon leadership and trainees, ensuring mission continuity and discipline.</li>
+          <li>Mentored peers in AIT curriculum, technical troubleshooting approaches, and Army standards, reducing common errors and strengthening unit cohesion.</li>
+          <li>Demonstrated strong communication skills, composure under pressure, and the ability to manage competing priorities — directly applicable to IT team lead and supervisory roles.</li>
+          <li>Maintained exemplary conduct and performance metrics that earned the trust of cadre leadership throughout the AIT training cycle.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="full-divider"></div>
+
+<!-- ─── CERTIFICATIONS ROADMAP ─── -->
+<section id="certs">
+  <div class="section-label">Professional Development</div>
+  <h2>Certification <span>Roadmap</span></h2>
+  <div class="section-rule"></div>
+
+  <div class="roadmap-grid">
+    <div class="roadmap-card reveal">
+      <div class="roadmap-status status-target">▶ Next Target</div>
+      <div class="roadmap-cert">Cisco CCNA</div>
+      <div class="roadmap-desc">Cisco's industry-standard networking certification covering routing, switching, VLANs, subnetting, and network security fundamentals. Validates enterprise-level networking knowledge well beyond baseline — directly aligned with DoD network experience.</div>
+    </div>
+
+    <div class="roadmap-card reveal" style="transition-delay:0.1s">
+      <div class="roadmap-status status-planned">Planned</div>
+      <div class="roadmap-cert">CompTIA Security+</div>
+      <div class="roadmap-desc">DoD 8570/8140-baseline cybersecurity certification covering threat management, cryptography, access control, and risk mitigation. A key credential for government-adjacent IT and security operations roles — the primary certification for the cybersecurity transition goal.</div>
+    </div>
+  </div>
+</section>
+
+<div class="full-divider"></div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <div class="section-label" style="justify-content:center; margin-bottom:1rem">Let's Connect</div>
+    <h2>Open to <span>Opportunities</span></h2>
+    <p>
+      Transitioning from active-duty Army service into civilian IT. Available for IT Support Specialist, 
+      Help Desk, Systems Administrator, and government-adjacent cybersecurity roles. 
+      Let's talk about how I can bring DoD-grade discipline and technical skill to your team.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:youremail@email.com" class="btn-primary">✉ Send Email</a>
+      <a href="https://www.linkedin.com/in/philip-gatliff-511935154/" target="_blank" class="btn-secondary">LinkedIn Profile</a>
+      <a href="#" class="btn-secondary" onclick="window.print()">Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>© 2025 <span>Philip</span> &nbsp;·&nbsp; U.S. Army 25B IT Specialist &nbsp;·&nbsp; Built for civilian transition</p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
